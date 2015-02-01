@@ -11,7 +11,7 @@ DriveRight::DriveRight()
 // Called just before this Command runs the first time
 void DriveRight::Initialize()
 {
-	SetTimeout(1);
+	SetTimeout(1.25);
 }
 
 // Called repeatedly when this Command is scheduled to run

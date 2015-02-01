@@ -88,7 +88,7 @@ void DriveTrain::Drive(double x_in, double y_in, double z_in) {
 }
 
 void DriveTrain::Drive(Joystick* joyxy, Joystick* joyz) {
-	Drive(-(joyxy->GetX()),joyxy->GetY(), joyz->GetZ());
+	Drive(-(joyxy->GetX()),joyxy->GetY(), -(joyz->GetZ()));
 }
 //
 //double DriveTrain::GetHeading() {
