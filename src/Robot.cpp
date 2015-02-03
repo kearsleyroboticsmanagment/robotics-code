@@ -4,8 +4,10 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
+#include "Commands/UltraSonicSensor.h"
 
 DriveTrain* Robot::drivetrain = NULL;
+AnalogSensor *Robot::analogsensor = NULL;
 //Elevator* Robot::elevator = NULL;
 //Wrist* Robot::wrist = NULL;
 //Claw* Robot::claw = NULL;
@@ -14,12 +16,13 @@ OI* Robot::oi = NULL;
 
 void Robot::RobotInit() {
 	drivetrain = new DriveTrain();
+	analogsensor = new AnalogSensor();
 //	elevator = new Elevator();
 //	wrist = new Wrist();
 //	claw = new Claw();
-//
 	oi = new OI();
-//
+
+	analogSensor = new UltraSonicSensor();
 	autonomousCommand = new Autonomous();
 //	lw = LiveWindow::GetInstance();
 //

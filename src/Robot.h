@@ -12,6 +12,7 @@
 #include "Commands/Command.h"
 
 #include "Subsystems/DriveTrain.h"
+#include "Subsystems/AnalogSensor.h"
 //#include "Subsystems/Elevator.h"
 //#include "Subsystems/Wrist.h"
 //#include "Subsystems/Claw.h"
@@ -24,9 +25,11 @@ public:
 //	static Wrist* wrist;
 //	static Claw* claw;
 	static OI* oi;
+	static AnalogSensor *analogsensor;
 
 private:
 	Command *autonomousCommand;
+	Command *analogSensor;
 //	LiveWindow *lw;
 
 	void RobotInit();
