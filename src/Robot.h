@@ -13,6 +13,7 @@
 
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/AnalogSensor.h"
+#include "Subsystems/DIO.h"
 //#include "Subsystems/Elevator.h"
 //#include "Subsystems/Wrist.h"
 //#include "Subsystems/Claw.h"
@@ -21,6 +22,7 @@
 class Robot: public IterativeRobot {
 public:
 	static DriveTrain* drivetrain;
+	static DIO *LimitSwitch1;
 //	static Elevator* elevator;
 //	static Wrist* wrist;
 //	static Claw* claw;
@@ -30,6 +32,7 @@ public:
 private:
 	Command *autonomousCommand;
 	Command *analogSensor;
+	Command *limitswitch;
 //	LiveWindow *lw;
 
 	void RobotInit();

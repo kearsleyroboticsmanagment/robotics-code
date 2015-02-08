@@ -6,7 +6,7 @@
 AnalogSensor::AnalogSensor():Subsystem("ExampleSubsystem")
 {
 	MaxSonar_EZ1 = new AnalogInput(3);
-	AnalogInput::SetSampleRate(4);
+	AnalogInput::SetSampleRate(2);
 }
 
 void AnalogSensor::InitDefaultCommand()
@@ -31,5 +31,5 @@ void AnalogSensor::ReadDistance()
 	voltage_ret = MaxSonar_EZ1->GetVoltage();
 	//voltage = MaxSonar_EZ1->GetAverageVoltage();
 	distance = (voltage_ret * inch_per_milivolt) * 1000;
-	SmartDashboard::PutNumber("DISTANCE_VALUE", distance);
+	SmartDashboard::PutNumber("Distance Value", distance);
 }

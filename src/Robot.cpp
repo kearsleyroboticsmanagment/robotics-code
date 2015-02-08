@@ -5,9 +5,11 @@
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
 #include "Commands/UltraSonicSensor.h"
+#include "Commands/LimitSwitches.h"
 
 DriveTrain* Robot::drivetrain = NULL;
 AnalogSensor *Robot::analogsensor = NULL;
+DIO *Robot::LimitSwitch1 = NULL;
 //Elevator* Robot::elevator = NULL;
 //Wrist* Robot::wrist = NULL;
 //Claw* Robot::claw = NULL;
@@ -17,6 +19,8 @@ OI* Robot::oi = NULL;
 void Robot::RobotInit() {
 	drivetrain = new DriveTrain();
 	analogsensor = new AnalogSensor();
+	LimitSwitch1 = new DIO();
+	LimitSwitch1->SetPort(4, "Limit Switch #1");
 //	elevator = new Elevator();
 //	wrist = new Wrist();
 //	claw = new Claw();
@@ -24,6 +28,7 @@ void Robot::RobotInit() {
 
 	analogSensor = new UltraSonicSensor();
 	autonomousCommand = new Autonomous();
+	limitswitch = new LimitSwitches();
 //	lw = LiveWindow::GetInstance();
 //
 //    // Show what command your subsystem is running on the SmartDashboard
