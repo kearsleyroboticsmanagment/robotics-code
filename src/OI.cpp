@@ -12,8 +12,9 @@ OI::OI() {
 //	SmartDashboard::PutData("Open Claw", new OpenClaw());
 //	SmartDashboard::PutData("Close Claw", new CloseClaw());
 
-	joyxy= new Joystick(0);
-	joyz= new Joystick(1);
+	joyxy = new Joystick(2);
+	joyz = new Joystick(1);
+	armjoystick = new Joystick(0);
 
 
 //    // Create some buttons
@@ -45,4 +46,9 @@ Joystick* OI::GetJoystickXY() {
 
 Joystick* OI::GetJoystickZ() {
 	return joyz;
+}
+
+Joystick *OI::GetArmJoystick()
+{
+	return armjoystick;
 }

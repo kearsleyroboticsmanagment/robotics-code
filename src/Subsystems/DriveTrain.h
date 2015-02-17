@@ -39,6 +39,7 @@ void Drive(double x_in, double y_in, double z_in);
 //	 * @param joy The ps3 style joystick to use to drive tank style.
 //	 */
 	void Drive(Joystick* joyxy, Joystick* joyz);
+	void GetStatus();
 //
 //	/**
 //	 * @return The robots heading in degrees.
