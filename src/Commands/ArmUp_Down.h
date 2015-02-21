@@ -6,8 +6,11 @@
 
 class ArmUp_Down: public CommandBase
 {
+private:
+	float drive_speed;
 public:
 	ArmUp_Down();
+	ArmUp_Down(float speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

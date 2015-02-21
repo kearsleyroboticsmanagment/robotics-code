@@ -3,7 +3,7 @@
 #include "Commands/ArmUp_down.h"
 #include "Robot.h"
 
-ArmSystem::ArmSystem() :Subsystem("ArmSystem")
+ArmSystem::ArmSystem():Subsystem("ArmSystem")
 {
 	Left_up_down_1 = new Talon(2);
 	Left_up_down_2 = new Talon(3);
@@ -11,27 +11,29 @@ ArmSystem::ArmSystem() :Subsystem("ArmSystem")
 	Right_up_down_2 = new Talon(0);
 }
 
-void ArmSystem::MoveY()
+void ArmSystem::MoveY(float drive_speed)
 {
 	float y;
 	Joystick *joy = Robot::oi->GetArmJoystick();
 	y = joy->GetY();
+	y *= drive_speed;
 	//SmartDashboard::PutNumber("ATTACK 3 Y VALUE: ", y);
-	Left_up_down_1->Set((y/2));
-	Left_up_down_2->Set((y/2));
-	Right_up_down_1->Set((y/2));
-	Right_up_down_2->Set((y/2));
+	Left_up_down_1->Set(-y);
+	Left_up_down_2->Set(-y);
+	Right_up_down_1->Set(y);
+	Right_up_down_2->Set(y);
 }
 
-void ArmSystem::MoveX()
+void ArmSystem::MoveX(float drive_speed)
 {
 	float x;
 	Joystick *joy = Robot::oi->GetArmJoystick();
 	x = joy->GetX();
-	Left_up_down_1->Set((x/2));
-	Left_up_down_2->Set((x/2));
-	Right_up_down_1->Set((x/2));
-	Right_up_down_2->Set((x/2));
+	x *= drive_speed;
+	Left_up_down_1->Set(x);
+	Left_up_down_2->Set(x);
+	Right_up_down_1->Set(x);
+	Right_up_down_2->Set(x);
 }
 
 void ArmSystem::InitDefaultCommand()

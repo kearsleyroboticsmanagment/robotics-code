@@ -1,4 +1,5 @@
 #include "OI.h"
+#include "Commands/ArmUp_Down.h"
 
 //#include "Commands/SetElevatorSetpoint.h"
 //#include "Commands/OpenClaw.h"
@@ -18,8 +19,8 @@ OI::OI() {
 
 
 //    // Create some buttons
-//    JoystickButton* d_up = new JoystickButton(joy, 5);
-//    JoystickButton* d_right= new JoystickButton(joy, 6);
+    JoystickButton* half_speed = new JoystickButton(armjoystick, 2);
+    JoystickButton* full_speed = new JoystickButton(armjoystick, 3);
 //    JoystickButton* d_down= new JoystickButton(joy, 7);
 //    JoystickButton* d_left = new JoystickButton(joy, 8);
 //    JoystickButton* l2 = new JoystickButton(joy, 9);
@@ -30,8 +31,10 @@ OI::OI() {
 //    // Connect the buttons to commands
 //    d_up->WhenPressed(new SetElevatorSetpoint(0.2));
 //    d_down->WhenPressed(new SetElevatorSetpoint(-0.2));
-//    d_right->WhenPressed(new CloseClaw());
+//    d_right->WhSenPressed(new CloseClaw());
 //    d_left->WhenPressed(new OpenClaw());
+    full_speed->ToggleWhenPressed(new ArmUp_Down(1));
+	half_speed->ToggleWhenPressed(new ArmUp_Down(.5));
 //
 //    r1->WhenPressed(new PrepareToPickup());
 //    r2->WhenPressed(new Pickup());
