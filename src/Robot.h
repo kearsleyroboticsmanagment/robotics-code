@@ -24,6 +24,13 @@ class Robot: public IterativeRobot {
 public:
 	static DriveTrain* drivetrain;
 	static DIO *LimitSwitch1;
+	static DIO *LimitSwitch2;
+	static DIO *LimitSwitch3;
+	static DIO *LimitSwitch4;
+	static DIO *LimitSwitch5;
+	static DIO *LimitSwitch6;
+	static DIO *LimitSwitch7;
+	static DIO *LimitSwitch8;
 //	static Elevator* elevator;
 //	static Wrist* wrist;
 //	static Claw* claw;

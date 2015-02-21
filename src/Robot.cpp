@@ -13,6 +13,13 @@
 DriveTrain* Robot::drivetrain = NULL;
 AnalogSensor *Robot::analogsensor = NULL;
 DIO *Robot::LimitSwitch1 = NULL;
+DIO *Robot::LimitSwitch2 = NULL;
+DIO *Robot::LimitSwitch3 = NULL;
+DIO *Robot::LimitSwitch4 = NULL;
+DIO *Robot::LimitSwitch5 = NULL;
+DIO *Robot::LimitSwitch6 = NULL;
+DIO *Robot::LimitSwitch7 = NULL;
+DIO *Robot::LimitSwitch8 = NULL;
 ArmSystem *Robot::armsystem = NULL;
 //Elevator* Robot::elevator = NULL;
 //Wrist* Robot::wrist = NULL;
@@ -23,32 +30,46 @@ OI* Robot::oi = NULL;
 
 void Robot::RobotInit()
 {
-	autoChooser = new SendableChooser();
-	printf("ROBOT STARTING!!!/n");
+	autoChooser = new SendableChooser(); //selectable auton
+	//printf("ROBOT STARTING!!!/n");
 	drivetrain = new DriveTrain();
-	printf("drivetrain created/n");
+	//printf("drivetrain created/n");
 	analogsensor = new AnalogSensor();
-	printf("analogsensor created/n");
+	//printf("analogsensor created/n");
 	LimitSwitch1 = new DIO();
-	printf("LimitSwitch1 created/n");
-	LimitSwitch1->SetPort(4, "Limit Switch #1");
-	printf("LimitSwitch1 set/n");
+	LimitSwitch2 = new DIO();
+	LimitSwitch3 = new DIO();
+	LimitSwitch4 = new DIO();
+	LimitSwitch5 = new DIO();
+	LimitSwitch6 = new DIO();
+	LimitSwitch7 = new DIO();
+	LimitSwitch8 = new DIO();
+	//printf("LimitSwitch1 created/n");
+	LimitSwitch1->SetPort(1, "Limit Switch #1");
+	LimitSwitch2->SetPort(2, "Limit Switch #2");
+	LimitSwitch3->SetPort(3, "Limit Switch #3");
+	LimitSwitch4->SetPort(4, "Limit Switch #4");
+	LimitSwitch5->SetPort(5, "Limit Switch #5");
+	LimitSwitch6->SetPort(6, "Limit Switch #6");
+	LimitSwitch7->SetPort(7, "Limit Switch #7");
+	LimitSwitch8->SetPort(8, "Limit Switch #8");
+	//printf("LimitSwitch1 set/n");
 	armsystem = new ArmSystem();
-	printf("armsystem created/n");
+	//printf("armsystem created/n");
 //	elevator = new Elevator();
 //	wrist = new Wrist();
 //	claw = new Claw();
 	oi = new OI();
-	printf("oi created/n");
+	//printf("oi created/n");
 
 	analogSensor = new UltraSonicSensor();
-	printf("analogSensor created/n");
+	//printf("analogSensor created/n");
 	autonomousCommand = new Autonomous();
-	printf("autonomousCommand created/n");
+	//printf("autonomousCommand created/n");
 	limitswitch = new LimitSwitches();
-	printf("limitswitch created/n");
+	//printf("limitswitch created/n");
 	arm_up_down = new ArmUp_Down();
-	printf("arm_up_down created/n");
+	//printf("arm_up_down created/n");
 
 	autoChooser->AddDefault("Default program", autonomousCommand);
 	autoChooser->AddObject("Experimental auto", arm_up_down);

@@ -3,10 +3,10 @@
 #include "../RobotMap.h"
 #include <string>
 
-DIO::DIO():Subsystem("ExampleSubsystem")
+DIO::DIO():Subsystem("DIO")
 {
-	x = 10;
-	limit_switch_1 = new DigitalInput(10);
+	x = 1;
+	limit_switch_1 = new DigitalInput(11);
 }
 
 void DIO::InitDefaultCommand()
@@ -21,6 +21,7 @@ void DIO::SetPort(int y, std::string nameIn)
 	limit_switch_1 = new DigitalInput(y);
 	x = y;
 	name = nameIn;
+
 }
 
 bool DIO::IsOn()

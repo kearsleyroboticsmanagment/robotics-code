@@ -7,7 +7,15 @@ LimitSwitches::LimitSwitches()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(Robot::LimitSwitch1);
+	Requires(Robot::LimitSwitch2);
+	Requires(Robot::LimitSwitch3);
+	Requires(Robot::LimitSwitch4);
+	Requires(Robot::LimitSwitch5);
+	Requires(Robot::LimitSwitch6);
+	Requires(Robot::LimitSwitch7);
+	Requires(Robot::LimitSwitch8);
 }
+
 
 // Called just before this Command runs the first time
 void LimitSwitches::Initialize()
@@ -19,6 +27,13 @@ void LimitSwitches::Initialize()
 void LimitSwitches::Execute()
 {
 	Robot::LimitSwitch1->IsOn();
+	Robot::LimitSwitch2->IsOn();
+	Robot::LimitSwitch3->IsOn();
+	Robot::LimitSwitch4->IsOn();
+	Robot::LimitSwitch5->IsOn();
+	Robot::LimitSwitch6->IsOn();
+	Robot::LimitSwitch7->IsOn();
+	Robot::LimitSwitch8->IsOn();
 }
 
 // Make this return true when this Command no longer needs to run execute()
