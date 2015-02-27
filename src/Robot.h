@@ -23,14 +23,14 @@
 class Robot: public IterativeRobot {
 public:
 	static DriveTrain* drivetrain;
-	static DIO *LimitSwitch1;
-	static DIO *LimitSwitch2;
-	static DIO *LimitSwitch3;
-	static DIO *LimitSwitch4;
-	static DIO *LimitSwitch5;
-	static DIO *LimitSwitch6;
-	static DIO *LimitSwitch7;
-	static DIO *LimitSwitch8;
+	static DIO *ArmUpDown_LeftSide_Top;
+	static DIO *ArmUpDown_LeftSide_Bottom;
+	static DIO *ArmUpDown_RightSide_Top;
+	static DIO *ArmUpDown_RightSide_Bottom;
+	static DIO *ArmInOut_LeftSide_In;
+	static DIO *ArmInOut_LeftSide_Out;
+	static DIO *ArmInOut_RightSide_In;
+	static DIO *ArmInOut_RightSide_Out;
 //	static Elevator* elevator;
 //	static Wrist* wrist;
 //	static Claw* claw;
@@ -38,12 +38,14 @@ public:
 	static OI* oi;
 	static AnalogSensor *analogsensor;
 	static ArmSystem *armsystem;
+	static ArmSystem *armsystem_in_out;
 
 private:
 	Command *autonomousCommand;
 	Command *analogSensor;
 	Command *limitswitch;
 	Command *arm_up_down;
+	Command *armmovementassisted;
 //	LiveWindow *lw;
 
 	void RobotInit();

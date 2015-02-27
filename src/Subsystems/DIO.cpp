@@ -5,8 +5,16 @@
 
 DIO::DIO():Subsystem("DIO")
 {
-	x = 1;
-	limit_switch_1 = new DigitalInput(11);
+	port_num = 10;
+	limit_switch_1 = new DigitalInput(10);
+	port_set = false;
+}
+
+DIO::DIO(int y):Subsystem("DIO")
+{
+	port_num = y;
+	limit_switch_1 = new DigitalInput(port_num);
+	port_set = true;
 }
 
 void DIO::InitDefaultCommand()
@@ -18,8 +26,12 @@ void DIO::InitDefaultCommand()
 
 void DIO::SetPort(int y, std::string nameIn)
 {
-	limit_switch_1 = new DigitalInput(y);
-	x = y;
+	if (port_set == false)
+	{
+		limit_switch_1 = new DigitalInput(y);
+		port_num = y;
+	}
+	else{}
 	name = nameIn;
 
 }

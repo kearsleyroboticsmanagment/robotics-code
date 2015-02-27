@@ -9,12 +9,14 @@ class DIO: public Subsystem
 {
 private:
 	DigitalInput *limit_switch_1;
-	int x;
+	int port_num;
 	std::string name;
+	bool port_set;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
 	DIO();
+	DIO(int y);
 	void InitDefaultCommand();
 	void SetPort(int x, std::string name);
 	bool IsOn();
