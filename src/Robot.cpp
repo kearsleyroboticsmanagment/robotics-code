@@ -11,6 +11,7 @@ DriveTrain* Robot::drivetrain = NULL;
 //Claw* Robot::claw = NULL;
 //
 OI* Robot::oi = NULL;
+Vision* Robot::vision = NULL;
 
 void Robot::RobotInit() {
 	drivetrain = new DriveTrain();
@@ -19,6 +20,7 @@ void Robot::RobotInit() {
 //	claw = new Claw();
 //
 	oi = new OI();
+	vision = new Vision();
 //
 	autonomousCommand = new Autonomous();
 //	lw = LiveWindow::GetInstance();

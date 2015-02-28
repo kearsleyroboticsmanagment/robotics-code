@@ -16,6 +16,7 @@
 //#include "Subsystems/Wrist.h"
 //#include "Subsystems/Claw.h"
 #include "OI.h"
+#include "Subsystems/Vision.h"
 
 class Robot: public IterativeRobot {
 public:
@@ -24,9 +25,11 @@ public:
 //	static Wrist* wrist;
 //	static Claw* claw;
 	static OI* oi;
+	static Vision* vision;
 
 private:
 	Command *autonomousCommand;
+	Command *teleopVisionCommand;
 //	LiveWindow *lw;
 
 	void RobotInit();
