@@ -9,55 +9,21 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 	front_right_motor = new CANJaguar(13);
 	back_right_motor = new CANJaguar(14);
 
-	front_left_motor->SetPercentMode(CANJaguar::QuadEncoder, 360);
+	front_left_motor->SetPercentMode();
 	front_left_motor->EnableControl();
-	front_left_motor->Set(0.0f);
+	//front_left_motor->Set(0.0f);
 
-	back_left_motor->SetPercentMode(CANJaguar::QuadEncoder, 360);
+	back_left_motor->SetPercentMode();
 	back_left_motor->EnableControl();
-	back_left_motor->Set(0.0f);
+	//back_left_motor->Set(0.0f);
 
-	front_right_motor->SetPercentMode(CANJaguar::QuadEncoder, 360);
+	front_right_motor->SetPercentMode();
 	front_right_motor->EnableControl();
-	front_right_motor->Set(0.0f);
+	//front_right_motor->Set(0.0f);
 
-	back_right_motor->SetPercentMode(CANJaguar::QuadEncoder, 360);
+	back_right_motor->SetPercentMode();
 	back_right_motor->EnableControl();
-	back_right_motor->Set(0.0f);
-
-	/* auton?
-	front_left_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
-	front_left_motor->EnableControl();
-	double setpoint;
-	setpoint = front_left_motor->GetPosition() + 2.0f;
-	front_left_motor->Set(setpoint);
-	//*setpoint = NULL;
-	//delete setpoint;
-
-	back_left_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
-	back_left_motor->EnableControl();
-	//double *setpoint;
-	setpoint = back_left_motor->GetPosition() + 2.0f;
-	back_left_motor->Set(setpoint);
-	//*setpoint = NULL;
-	//delete setpoint;
-
-	front_right_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
-	front_right_motor->EnableControl();
-	//double *setpoint;
-	setpoint = front_left_motor->GetPosition() + 2.0f;
-	front_right_motor->Set(setpoint);
-	//*setpoint = NULL;
-	//delete setpoint;
-
-	back_right_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
-	back_right_motor->EnableControl();
-	//double *setpoint;
-	setpoint = back_right_motor->GetPosition() + 2.0f;
-	back_right_motor->Set(setpoint);
-	//*setpoint = NULL;
-	//delete setpoint;
-	*/
+	//back_right_motor->Set(0.0f);
 
 	drive = new RobotDrive(front_left_motor, back_left_motor,
 						   front_right_motor, back_right_motor);
@@ -123,29 +89,6 @@ void DriveTrain::Drive(double x_in, double y_in, double z_in) {
 
 void DriveTrain::Drive(Joystick* joyxy, Joystick* joyz) {
 	Drive(-(joyxy->GetX()),joyxy->GetY(), -(joyz->GetZ()));
-}
-
-void DriveTrain::GetStatus()
-{
-	SmartDashboard::PutNumber("Bus Voltage front left =",front_left_motor->GetBusVoltage());
-	SmartDashboard::PutNumber("Bus Voltage front right =",back_right_motor->GetBusVoltage());
-	SmartDashboard::PutNumber("Bus Voltage back left =",back_left_motor->GetBusVoltage());
-	SmartDashboard::PutNumber("Bus Voltage back right =",back_right_motor->GetBusVoltage());
-
-	SmartDashboard::PutNumber("Output Voltage front left =",front_left_motor->GetOutputVoltage());
-	SmartDashboard::PutNumber("Output Voltage front right =",back_right_motor->GetOutputVoltage());
-	SmartDashboard::PutNumber("Output Voltage back left =",back_left_motor->GetOutputVoltage());
-	SmartDashboard::PutNumber("Output Voltage back right =",back_right_motor->GetOutputVoltage());
-
-	SmartDashboard::PutNumber("Output Current front left =",front_left_motor->GetOutputCurrent());
-	SmartDashboard::PutNumber("Output Current front right =",back_right_motor->GetOutputCurrent());
-	SmartDashboard::PutNumber("Output Current back left =",back_left_motor->GetOutputCurrent());
-	SmartDashboard::PutNumber("Output Current back right =",back_right_motor->GetOutputCurrent());
-
-	SmartDashboard::PutNumber("Temp front left =",front_left_motor->GetTemperature());
-	SmartDashboard::PutNumber("Temp front right =",back_right_motor->GetTemperature());
-	SmartDashboard::PutNumber("Temp back left =",back_left_motor->GetTemperature());
-	SmartDashboard::PutNumber("Temp back right =",back_right_motor->GetTemperature());
 }
 //
 //double DriveTrain::GetHeading() {

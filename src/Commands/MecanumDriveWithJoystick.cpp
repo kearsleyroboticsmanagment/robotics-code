@@ -19,7 +19,6 @@ void MecanumDriveWithJoystick::Initialize()
 void MecanumDriveWithJoystick::Execute()
 {
 	Robot::drivetrain->Drive((Robot::oi->GetJoystickXY()), (Robot::oi->GetJoystickZ()));
-	Robot::drivetrain->GetStatus();
 }
 
 // Make this return true when this Command no longer needs to run execute()
