@@ -2,6 +2,8 @@
 
 #include "DriveForward.h"
 #include "DriveRight.h"
+#include "AutonVisionCommand.h"
+#include "teleopVisionCommand.h"
 
 #include <iostream>
 
@@ -23,6 +25,8 @@ Autonomous::Autonomous() : CommandGroup("Autonomous")
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	//AddSequential(new DriveForward());
+	AddParallel(new AutonVisionCommand());
+	//AddParallel(new teleopVisionCommand());
+	AddSequential(new DriveForward());
 	AddSequential(new DriveRight());
 }
