@@ -23,14 +23,14 @@
 class Robot: public IterativeRobot {
 public:
 	static DriveTrain* drivetrain;
-	static DIO *ArmUpDown_LeftSide_Top;
-	static DIO *ArmUpDown_LeftSide_Bottom;
-	static DIO *ArmUpDown_RightSide_Top;
-	static DIO *ArmUpDown_RightSide_Bottom;
-	static DIO *ArmInOut_LeftSide_In;
-	static DIO *ArmInOut_LeftSide_Out;
-	static DIO *ArmInOut_RightSide_In;
-	static DIO *ArmInOut_RightSide_Out;
+	static DIO *LeftSide_Top;
+	static DIO *LeftSide_Bottom;
+	static DIO *RightSide_Top;
+	static DIO *RightSide_Bottom;
+	static DIO *LeftSide_In;
+	static DIO *LeftSide_Out;
+	static DIO *RightSide_In;
+	static DIO *RightSide_Out;
 //	static Elevator* elevator;
 //	static Wrist* wrist;
 //	static Claw* claw;

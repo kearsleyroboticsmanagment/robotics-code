@@ -7,7 +7,8 @@
 class ArmSystem: public Subsystem
 {
 private:
-	Talon *Left_up_down_1, *Left_up_down_2, *Right_up_down_1, *Right_up_down_2, *Left_in_out, *Right_in_out;
+	Talon *Left_up_down_1, *Left_up_down_2, *Right_up_down_1, *Right_up_down_2;
+	Jaguar *Left_in_out, *Right_in_out;
 	float drive_speed;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -23,8 +24,8 @@ public:
 	Talon *GetLeft_up_down2();
 	Talon *GetRight_up_down1();
 	Talon *GetRight_up_down2();
-	Talon *GetLeft_in_out();
-	Talon *GetRight_in_out();
+	Jaguar *GetLeft_in_out();
+	Jaguar *GetRight_in_out();
 	void InitDefaultCommand();
 };
 

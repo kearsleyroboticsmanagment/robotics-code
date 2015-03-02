@@ -6,14 +6,14 @@ LimitSwitches::LimitSwitches()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(Robot::ArmUpDown_LeftSide_Top);
-	Requires(Robot::ArmUpDown_LeftSide_Bottom);
-	Requires(Robot::ArmUpDown_RightSide_Top);
-	Requires(Robot::ArmUpDown_RightSide_Bottom);
-	Requires(Robot::ArmInOut_LeftSide_In);
-	Requires(Robot::ArmInOut_LeftSide_Out);
-	Requires(Robot::ArmInOut_RightSide_In);
-	Requires(Robot::ArmInOut_RightSide_Out);
+	Requires(Robot::LeftSide_Top);
+	Requires(Robot::LeftSide_Bottom);
+	Requires(Robot::RightSide_Top);
+	Requires(Robot::RightSide_Bottom);
+	Requires(Robot::LeftSide_In);
+	Requires(Robot::LeftSide_Out);
+	Requires(Robot::RightSide_In);
+	Requires(Robot::RightSide_Out);
 }
 
 
@@ -26,14 +26,14 @@ void LimitSwitches::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void LimitSwitches::Execute()
 {
-	Robot::ArmUpDown_LeftSide_Top->IsOn();
-	Robot::ArmUpDown_LeftSide_Bottom->IsOn();
-	Robot::ArmUpDown_RightSide_Top->IsOn();
-	Robot::ArmUpDown_RightSide_Bottom->IsOn();
-	Robot::ArmInOut_LeftSide_In->IsOn();
-	Robot::ArmInOut_LeftSide_Out->IsOn();
-	Robot::ArmInOut_RightSide_In->IsOn();
-	Robot::ArmInOut_RightSide_Out->IsOn();
+	Robot::LeftSide_Top->IsOn();
+	Robot::LeftSide_Bottom->IsOn();
+	Robot::RightSide_Top->IsOn();
+	Robot::RightSide_Bottom->IsOn();
+	Robot::LeftSide_In->IsOn();
+	Robot::LeftSide_Out->IsOn();
+	Robot::RightSide_In->IsOn();
+	Robot::RightSide_Out->IsOn();
 }
 
 // Make this return true when this Command no longer needs to run execute()

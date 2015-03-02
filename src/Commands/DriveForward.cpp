@@ -18,7 +18,7 @@ void DriveForward::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute()
 {
-	Robot::drivetrain->Drive(0,.75,0);
+	Robot::drivetrain->Drive(0,.75,0); //change to new pid
 }
 
 // Make this return true when this Command no longer needs to run execute()

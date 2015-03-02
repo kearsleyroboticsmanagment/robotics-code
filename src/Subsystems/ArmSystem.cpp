@@ -9,8 +9,8 @@ ArmSystem::ArmSystem():Subsystem("ArmSystem")
 	Left_up_down_2 = new Talon(3);
 	Right_up_down_1 = new Talon(1);
 	Right_up_down_2 = new Talon(0);
-	Left_in_out = new Talon(4);
-	Right_in_out = new Talon(5);
+	Left_in_out = new Jaguar(4);
+	Right_in_out = new Jaguar(5);
 }
 
 ArmSystem::ArmSystem(int bypass):Subsystem("ArmSystem")
@@ -96,12 +96,12 @@ Talon *ArmSystem::GetRight_up_down2()
 	return Right_up_down_2;
 }
 
-Talon *ArmSystem::GetLeft_in_out()
+Jaguar *ArmSystem::GetLeft_in_out()
 {
 	return Left_in_out;
 }
 
-Talon *ArmSystem::GetRight_in_out()
+Jaguar *ArmSystem::GetRight_in_out()
 {
 	return Right_in_out;
 }

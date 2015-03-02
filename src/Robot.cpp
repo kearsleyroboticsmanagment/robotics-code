@@ -11,16 +11,17 @@
 
 #include <stdio.h>
 
+//subsystems
 DriveTrain* Robot::drivetrain = NULL;
 AnalogSensor *Robot::analogsensor = NULL;
-DIO *Robot::ArmUpDown_LeftSide_Top = NULL;
-DIO *Robot::ArmUpDown_LeftSide_Bottom = NULL;
-DIO *Robot::ArmUpDown_RightSide_Top = NULL;
-DIO *Robot::ArmUpDown_RightSide_Bottom = NULL;
-DIO *Robot::ArmInOut_LeftSide_In = NULL;
-DIO *Robot::ArmInOut_LeftSide_Out = NULL;
-DIO *Robot::ArmInOut_RightSide_In = NULL;
-DIO *Robot::ArmInOut_RightSide_Out = NULL;
+DIO *Robot::LeftSide_Top = NULL;
+DIO *Robot::LeftSide_Bottom = NULL;
+DIO *Robot::RightSide_Top = NULL;
+DIO *Robot::RightSide_Bottom = NULL;
+DIO *Robot::LeftSide_In = NULL;
+DIO *Robot::LeftSide_Out = NULL;
+DIO *Robot::RightSide_In = NULL;
+DIO *Robot::RightSide_Out = NULL;
 ArmSystem *Robot::armsystem = NULL;
 ArmSystem *Robot::armsystem_in_out = NULL;
 //Elevator* Robot::elevator = NULL;
@@ -38,23 +39,23 @@ void Robot::RobotInit()
 	//printf("drivetrain created/n");
 	analogsensor = new AnalogSensor();
 	//printf("analogsensor created/n");
-	ArmUpDown_LeftSide_Top = new DIO(0);
-	ArmUpDown_LeftSide_Bottom = new DIO(1);
-	ArmUpDown_RightSide_Top = new DIO(2);
-	ArmUpDown_RightSide_Bottom = new DIO(3);
-	ArmInOut_LeftSide_In = new DIO(4);
-	ArmInOut_LeftSide_Out = new DIO(5);
-	ArmInOut_RightSide_In = new DIO(6);
-	ArmInOut_RightSide_In = new DIO(7);
+	LeftSide_Top = new DIO(0);
+	LeftSide_Bottom = new DIO(1);
+	RightSide_Top = new DIO(2);
+	RightSide_Bottom = new DIO(3);
+	LeftSide_In = new DIO(4);
+	LeftSide_Out = new DIO(5);
+	RightSide_In = new DIO(6);
+	RightSide_In = new DIO(7);
 	//printf("LimitSwitch1 created/n");
-	ArmUpDown_LeftSide_Top->SetPort(0, "Limit Switch #1");
-	ArmUpDown_LeftSide_Bottom->SetPort(1, "Limit Switch #2");
-	ArmUpDown_RightSide_Top->SetPort(2, "Limit Switch #3");
-	ArmUpDown_RightSide_Bottom->SetPort(3, "Limit Switch #4");
-	ArmInOut_LeftSide_In->SetPort(4, "Limit Switch #5");
-	ArmInOut_LeftSide_Out->SetPort(5, "Limit Switch #6");
-	ArmInOut_RightSide_In->SetPort(6, "Limit Switch #7");
-	ArmInOut_RightSide_Out->SetPort(7, "Limit Switch #8");
+	LeftSide_Top->SetPort(0, "Limit Switch #1");
+	LeftSide_Bottom->SetPort(1, "Limit Switch #2");
+	RightSide_Top->SetPort(2, "Limit Switch #3");
+	RightSide_Bottom->SetPort(3, "Limit Switch #4");
+	LeftSide_In->SetPort(4, "Limit Switch #5");
+	LeftSide_Out->SetPort(5, "Limit Switch #6");
+	RightSide_In->SetPort(6, "Limit Switch #7");
+	RightSide_Out->SetPort(7, "Limit Switch #8");
 	//printf("LimitSwitch1 set/n");
 	armsystem = new ArmSystem();
 	armsystem_in_out = new ArmSystem(1);//Sent a 1 in order to bypass the redeclaration of the victors

@@ -31,12 +31,12 @@ void ArmMovementAssisted::Execute()
 	Talon *leftup1 = Robot::armsystem->GetLeft_up_down1();
 	Talon *leftup2 = Robot::armsystem->GetLeft_up_down1();
 
-	Talon *rightin = Robot::armsystem->GetRight_in_out();
-	Talon *leftin = Robot::armsystem->GetLeft_in_out();
+	Jaguar *rightin = Robot::armsystem->GetRight_in_out();
+	Jaguar *leftin = Robot::armsystem->GetLeft_in_out();
 
 
 	//top
-	 if((Robot::ArmUpDown_LeftSide_Top->IsOn() == true) && (Robot::ArmUpDown_RightSide_Top->IsOn() == true))
+	 if((Robot::LeftSide_Top->IsOn() == true) && (Robot::RightSide_Top->IsOn() == true))
 	 {
 		 leftup1->Set(0);
 		 leftup2->Set(0);
@@ -44,21 +44,21 @@ void ArmMovementAssisted::Execute()
 		 rightup2->Set(0);
 
 	 }
-	 else if((Robot::ArmUpDown_LeftSide_Top->IsOn() == true) && (Robot::ArmUpDown_RightSide_Top->IsOn() == false))
+	 else if((Robot::LeftSide_Top->IsOn() == true) && (Robot::RightSide_Top->IsOn() == false))
 	 {
 		 leftup1->Set(0);
 		 leftup2->Set(0);
 		 rightup1->Set(Robot::armsystem->GetDriveSpeed());
 		 rightup2->Set(Robot::armsystem->GetDriveSpeed());
 	 }
-	 else if((Robot::ArmUpDown_LeftSide_Top->IsOn() == false) && (Robot::ArmUpDown_RightSide_Top->IsOn() == true))
+	 else if((Robot::LeftSide_Top->IsOn() == false) && (Robot::RightSide_Top->IsOn() == true))
 	 {
 		 leftup1->Set(Robot::armsystem->GetDriveSpeed());
 		 leftup2->Set(Robot::armsystem->GetDriveSpeed());
 		 rightup1->Set(0);
 		 rightup2->Set(0);
 	 }
-	 else if((Robot::ArmUpDown_LeftSide_Top->IsOn() == false) && (Robot::ArmUpDown_RightSide_Top->IsOn() == false))
+	 else if((Robot::LeftSide_Top->IsOn() == false) && (Robot::RightSide_Top->IsOn() == false))
 	 {
 		 leftup1->Set(Robot::armsystem->GetDriveSpeed());
 		 leftup2->Set(Robot::armsystem->GetDriveSpeed());
@@ -68,28 +68,28 @@ void ArmMovementAssisted::Execute()
 	 else{}
 
 	 //bottom
-	 if((Robot::ArmUpDown_LeftSide_Bottom->IsOn() == true) && (Robot::ArmUpDown_RightSide_Bottom->IsOn() == true))
+	 if((Robot::LeftSide_Bottom->IsOn() == true) && (Robot::RightSide_Bottom->IsOn() == true))
 	 {
 		 leftup1->Set(0);
 		 leftup2->Set(0);
 		 rightup1->Set(0);
 		 rightup2->Set(0);
 	 }
-	 else if((Robot::ArmUpDown_LeftSide_Bottom->IsOn() == true) && (Robot::ArmUpDown_RightSide_Bottom->IsOn() == false))
+	 else if((Robot::LeftSide_Bottom->IsOn() == true) && (Robot::RightSide_Bottom->IsOn() == false))
 	 {
 		 leftup1->Set(0);
 		 leftup2->Set(0);
 		 rightup1->Set(Robot::armsystem->GetDriveSpeed());
 		 rightup2->Set(Robot::armsystem->GetDriveSpeed());
 	 }
-	 else if((Robot::ArmUpDown_LeftSide_Bottom->IsOn() == false) && (Robot::ArmUpDown_RightSide_Bottom->IsOn() == true))
+	 else if((Robot::LeftSide_Bottom->IsOn() == false) && (Robot::RightSide_Bottom->IsOn() == true))
 	 {
 		 leftup1->Set(Robot::armsystem->GetDriveSpeed());
 		 leftup2->Set(Robot::armsystem->GetDriveSpeed());
 		 rightup1->Set(0);
 		 rightup2->Set(0);
 	 }
-	 else if((Robot::ArmUpDown_LeftSide_Bottom->IsOn() == false) && (Robot::ArmUpDown_RightSide_Bottom->IsOn() == false))
+	 else if((Robot::LeftSide_Bottom->IsOn() == false) && (Robot::RightSide_Bottom->IsOn() == false))
 	 {
 		 leftup1->Set(Robot::armsystem->GetDriveSpeed());
 		 leftup2->Set(Robot::armsystem->GetDriveSpeed());
@@ -99,22 +99,22 @@ void ArmMovementAssisted::Execute()
 	 else{}
 
 	 //in
-	 if((Robot::ArmInOut_LeftSide_Out->IsOn() == true) && (Robot::ArmInOut_RightSide_Out->IsOn() == true))
+	 if((Robot::LeftSide_Out->IsOn() == true) && (Robot::RightSide_Out->IsOn() == true))
 	 {
 		 leftin->Set(0);
 		 rightin->Set(0);
 	 }
-	 else if((Robot::ArmInOut_LeftSide_Out->IsOn() == true) && (Robot::ArmInOut_RightSide_Out->IsOn() == false))
+	 else if((Robot::LeftSide_Out->IsOn() == true) && (Robot::RightSide_Out->IsOn() == false))
 	 {
 		 leftin->Set(0);
 		 rightin->Set(Robot::armsystem->GetDriveSpeed());
 	 }
-	 else if((Robot::ArmInOut_LeftSide_Out->IsOn() == false) && (Robot::ArmInOut_RightSide_Out->IsOn() == true))
+	 else if((Robot::LeftSide_Out->IsOn() == false) && (Robot::RightSide_Out->IsOn() == true))
 	 {
 		 leftin->Set(Robot::armsystem->GetDriveSpeed());
 		 rightin->Set(0);
 	 }
-	 else if((Robot::ArmInOut_LeftSide_Out->IsOn() == false) && (Robot::ArmInOut_RightSide_Out->IsOn() == false))
+	 else if((Robot::LeftSide_Out->IsOn() == false) && (Robot::RightSide_Out->IsOn() == false))
 	 {
 		 leftin->Set(Robot::armsystem->GetDriveSpeed());
 		 rightin->Set(Robot::armsystem->GetDriveSpeed());
@@ -122,22 +122,22 @@ void ArmMovementAssisted::Execute()
 	 else{}
 
 	 //out
-	 if((Robot::ArmInOut_LeftSide_In->IsOn() == true) && (Robot::ArmInOut_RightSide_In->IsOn() == true))
+	 if((Robot::LeftSide_In->IsOn() == true) && (Robot::RightSide_In->IsOn() == true))
 	 {
 		 leftin->Set(0);
 		 rightin->Set(0);
 	 }
-	 else if((Robot::ArmInOut_LeftSide_In->IsOn() == true) && (Robot::ArmInOut_RightSide_In->IsOn() == false))
+	 else if((Robot::LeftSide_In->IsOn() == true) && (Robot::RightSide_In->IsOn() == false))
 	 {
 		 leftin->Set(0);
 		 rightin->Set(Robot::armsystem->GetDriveSpeed());
 	 }
-	 else if((Robot::ArmInOut_LeftSide_In->IsOn() == false) && (Robot::ArmInOut_RightSide_In->IsOn() == true))
+	 else if((Robot::LeftSide_In->IsOn() == false) && (Robot::RightSide_In->IsOn() == true))
 	 {
 		 leftin->Set(Robot::armsystem->GetDriveSpeed());
 		 rightin->Set(0);
 	 }
-	 else if((Robot::ArmInOut_LeftSide_In->IsOn() == false) && (Robot::ArmInOut_RightSide_In->IsOn() == false))
+	 else if((Robot::LeftSide_In->IsOn() == false) && (Robot::RightSide_In->IsOn() == false))
 	 {
 		 leftin->Set(Robot::armsystem->GetDriveSpeed());
 		 rightin->Set(Robot::armsystem->GetDriveSpeed());

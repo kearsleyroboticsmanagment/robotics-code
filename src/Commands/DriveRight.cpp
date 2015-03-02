@@ -17,7 +17,7 @@ void DriveRight::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DriveRight::Execute()
 {
-	Robot::drivetrain->Drive(.75,0,0);
+	Robot::drivetrain->Drive(.75,0,0); // change to new pid stuff
 }
 
 // Make this return true when this Command no longer needs to run execute()
