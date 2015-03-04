@@ -9,7 +9,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 	front_right_motor = new CANJaguar(13);
 	back_right_motor = new CANJaguar(14);
 
-	front_left_motor->SetPercentMode();
+	/*front_left_motor->SetPercentMode();
 	front_left_motor->EnableControl();
 	//front_left_motor->Set(0.0f);
 
@@ -23,7 +23,27 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 
 	back_right_motor->SetPercentMode();
 	back_right_motor->EnableControl();
-	//back_right_motor->Set(0.0f);
+	//back_right_motor->Set(0.0f);*/
+
+	front_left_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
+	front_left_motor->EnableControl();
+	double setpoint1 = front_left_motor->GetPosition() + 10.0f;
+	front_left_motor->Set(setpoint1);
+
+	back_left_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
+	back_left_motor->EnableControl();
+	double setpoint2 = back_left_motor->GetPosition() + 10.0f;
+	back_left_motor->Set(setpoint2);
+
+	front_right_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
+	front_right_motor->EnableControl();
+	double setpoint3 = front_right_motor->GetPosition() + 10.0f;
+	front_right_motor->Set(setpoint3);
+
+	back_right_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
+	back_right_motor->EnableControl();
+	double setpoint4 = back_right_motor->GetPosition() + 10.0f;
+	back_right_motor->Set(setpoint4);
 
 	drive = new RobotDrive(front_left_motor, back_left_motor,
 						   front_right_motor, back_right_motor);
@@ -89,6 +109,22 @@ void DriveTrain::Drive(double x_in, double y_in, double z_in) {
 
 void DriveTrain::Drive(Joystick* joyxy, Joystick* joyz) {
 	Drive(-(joyxy->GetX()),joyxy->GetY(), -(joyz->GetZ()));
+}
+
+double DriveTrain::GetFLPosition(){
+	return front_left_motor->GetPosition();
+}
+
+double DriveTrain::GetBLPosition(){
+	return back_left_motor->GetPosition();
+}
+
+double DriveTrain::GetFRPosition(){
+	return front_right_motor->GetPosition();
+}
+
+double DriveTrain::GetBRPosition(){
+	return back_right_motor->GetPosition();
 }
 //
 //double DriveTrain::GetHeading() {

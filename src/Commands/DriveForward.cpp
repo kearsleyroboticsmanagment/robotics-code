@@ -11,8 +11,12 @@ DriveForward::DriveForward() : Command("DriveForward")
 // Called just before this Command runs the first time
 void DriveForward::Initialize()
 {
+	/*double FL_init = Robot::drivetrain->GetFLPosition();
+	double BL_init = Robot::drivetrain->GetBLPosition();
+	double FR_init = Robot::drivetrain->GetFRPosition();
+	double BR_init = Robot::drivetrain->GetBRPosition();*/
 	// set timeout to 1 sec
-	SetTimeout(1);
+	//SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -24,7 +28,8 @@ void DriveForward::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool DriveForward::IsFinished()
 {
-	return (IsTimedOut());
+	//return (IsTimedOut());
+	return ((Robot::drivetrain->GetFLPosition()) >= 3);
 }
 
 // Called once after isFinished returns true
