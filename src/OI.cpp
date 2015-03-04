@@ -1,4 +1,6 @@
 #include "OI.h"
+#include "Commands/ArmVertical.h"
+#include "Commands/toggleSpeed.h"
 
 //#include "Commands/SetElevatorSetpoint.h"
 //#include "Commands/OpenClaw.h"
@@ -14,6 +16,15 @@ OI::OI() {
 
 	joyxy= new Joystick(0);
 	joyz= new Joystick(1);
+
+	joyArm = new Joystick(2);
+	//joyArm2 = new Joystick(3)
+
+	//JoystickButton* halfSpeed = new JoystickButton(joyArm, 2);
+	fullSpeed = new JoystickButton(joyArm, 3);
+
+	fullSpeed->WhileHeld(new toggleSpeed());
+	//halfSpeed->ToggleWhenPressed(new ArmVertical(.5));
 
 
 //    // Create some buttons
@@ -45,4 +56,12 @@ Joystick* OI::GetJoystickXY() {
 
 Joystick* OI::GetJoystickZ() {
 	return joyz;
+}
+
+Joystick* OI::GetJoyArm() {
+	return joyArm;
+}
+
+bool OI::GetSpeedButton(){
+	return OI::fullSpeed->Get();
 }

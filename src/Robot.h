@@ -17,6 +17,7 @@
 //#include "Subsystems/Claw.h"
 #include "OI.h"
 #include "Subsystems/Vision.h"
+#include "Subsystems/Arm.h"
 
 class Robot: public IterativeRobot {
 public:
@@ -26,6 +27,8 @@ public:
 //	static Claw* claw;
 	static OI* oi;
 	static Vision* vision;
+	static Arm* arm;
+	//static Arms* arm2
 
 private:
 	Command *autonomousCommand;

@@ -12,6 +12,7 @@ DriveTrain* Robot::drivetrain = NULL;
 //
 OI* Robot::oi = NULL;
 Vision* Robot::vision = NULL;
+Arm* Robot::arm = NULL;
 
 void Robot::RobotInit() {
 	drivetrain = new DriveTrain();
