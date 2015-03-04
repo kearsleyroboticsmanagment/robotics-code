@@ -9,7 +9,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 	front_right_motor = new CANJaguar(13);
 	back_right_motor = new CANJaguar(14);
 
-	/*front_left_motor->SetPercentMode();
+	front_left_motor->SetPercentMode();
 	front_left_motor->EnableControl();
 	//front_left_motor->Set(0.0f);
 
@@ -23,38 +23,40 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 
 	back_right_motor->SetPercentMode();
 	back_right_motor->EnableControl();
-	//back_right_motor->Set(0.0f);*/
+	//back_right_motor->Set(0.0f);
 
-	front_left_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
-	front_left_motor->EnableControl();
-	double setpoint1 = front_left_motor->GetPosition() + 10.0f;
-	front_left_motor->Set(setpoint1);
-
-	back_left_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
-	back_left_motor->EnableControl();
-	double setpoint2 = back_left_motor->GetPosition() + 10.0f;
-	back_left_motor->Set(setpoint2);
-
-	front_right_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
-	front_right_motor->EnableControl();
-	double setpoint3 = front_right_motor->GetPosition() + 10.0f;
-	front_right_motor->Set(setpoint3);
-
-	back_right_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
-	back_right_motor->EnableControl();
-	double setpoint4 = back_right_motor->GetPosition() + 10.0f;
-	back_right_motor->Set(setpoint4);
-
-	drive = new RobotDrive(front_left_motor, back_left_motor,
-						   front_right_motor, back_right_motor);
-
-	drive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);	// invert the left side motors
-	drive->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);	// you may need to change or remove this to match your robot
+//	front_left_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
+//	front_left_motor->EnableControl(0.0);
+//	//double setpoint1 = front_left_motor->GetPosition() + 10.0f;
+//	//front_left_motor->Set(setpoint1);
+//
+//	back_left_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
+//	back_left_motor->EnableControl(0.0);
+//	//double setpoint2 = back_left_motor->GetPosition() + 10.0f;
+//	//back_left_motor->Set(setpoint2);
+//
+//	front_right_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
+//	front_right_motor->EnableControl(0.0);
+//	//double setpoint3 = front_right_motor->GetPosition() + 10.0f;
+//	//front_right_motor->Set(setpoint3);
+//
+//	back_right_motor->SetPositionMode(CANJaguar::QuadEncoder, 360, 10.0f, 0.4f, 0.2f);
+//	back_right_motor->EnableControl(0.0);
+//	//double setpoint4 = back_right_motor->GetPosition() + 10.0f;
+//	//back_right_motor->Set(setpoint4);
+//
+//	drive = new RobotDrive(front_left_motor, back_left_motor,
+//						   front_right_motor, back_right_motor);
+//
+//	drive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);	// invert the left side motors
+//	drive->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);	// you may need to change or remove this to match your robot
 
 	drive->SetSafetyEnabled(false);
 
 //	left_encoder = new Encoder(1, 2);
 //	right_encoder = new Encoder(3, 4);
+//  left_encoder->SetDistancePerPulse((6.0*M_PI)/360)
+//  right_encoder->SetDistancePerPulse((6.0*M_PI)/360)
 
 	// Encoders may measure differently in the real world and in
 	// simulation. In this example the robot moves 0.042 barleycorns
@@ -111,20 +113,40 @@ void DriveTrain::Drive(Joystick* joyxy, Joystick* joyz) {
 	Drive(-(joyxy->GetX()),joyxy->GetY(), -(joyz->GetZ()));
 }
 
-double DriveTrain::GetFLPosition(){
-	return front_left_motor->GetPosition();
+void DriveTrain::SetToPosition(){
+	front_left_motor->SetControlMode(CANJaguar::kPosition);
+	front_left_motor->SetPID(0.4, .005, 0.0);
+	front_left_motor->ConfigEncoderCodesPerRev(360);
+
+	back_left_motor->SetControlMode(CANJaguar::kPosition);
+	back_left_motor->SetPID(0.4, .005, 0.0);
+	back_left_motor->ConfigEncoderCodesPerRev(360);
+
+	front_right_motor->SetControlMode(CANJaguar::kPosition);
+	front_right_motor->SetPID(0.4, .005, 0.0);
+	front_right_motor->ConfigEncoderCodesPerRev(360);
+
+	back_right_motor->SetControlMode(CANJaguar::kPosition);
+	back_right_motor->SetPID(0.4, .005, 0.0);
+	back_right_motor->ConfigEncoderCodesPerRev(360);
 }
 
-double DriveTrain::GetBLPosition(){
-	return back_left_motor->GetPosition();
+void DriveTrain::Reset(){
+	front_left_motor->EnableControl(0.0);
+	front_right_motor->EnableControl(0.0);
+	back_left_motor->EnableControl(0.0);
+	back_right_motor->EnableControl(0.0);
 }
 
-double DriveTrain::GetFRPosition(){
-	return front_right_motor->GetPosition();
+double DriveTrain::GetDistance(){
+	return (front_left_motor->GetPosition()*6*M_PI);
 }
 
-double DriveTrain::GetBRPosition(){
-	return back_right_motor->GetPosition();
+void DriveTrain::SetDistance(double FL, double BL, double FR, double BR){
+	front_left_motor->Set(FL);
+	front_right_motor->Set(BL);
+	back_left_motor->Set(FR);
+	back_right_motor->Set(BR);
 }
 //
 //double DriveTrain::GetHeading() {

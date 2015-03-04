@@ -7,6 +7,7 @@
 class DriveForward: public Command
 {
 public:
+	bool isDone;
 	DriveForward();
 	void Initialize();
 	void Execute();
