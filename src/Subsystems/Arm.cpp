@@ -1,9 +1,13 @@
 #include "Arm.h"
 #include "../RobotMap.h"
+#include "Commands/ArmVertical.h"
+#include "Commands/toggleSpeed.h"
 
 Arm::Arm() :
 		Subsystem("ExampleSubsystem")
 {
+	isFullSpeed = false;
+
 	FL = new CANJaguar(15);
 	BL = new CANJaguar(16);
 	FR = new CANJaguar(17);
@@ -39,6 +43,12 @@ void Arm::SetVertical(Joystick* joyArm_in){
 	}
 	else{
 		power = (joyArm_in->GetY())/2;
+	}
+	if((!(FL->GetForwardLimitOK())) && power >= 0){
+		power = 0;
+	}
+	if((!(FL->GetReverseLimitOK())) && power <= 0){
+		power = 0;
 	}
 	FL->Set(power);
 	BL->Set(power);

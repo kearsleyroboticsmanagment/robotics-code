@@ -4,6 +4,8 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
+#include "Commands/ArmVertical.h"
+#include "Commands/toggleSpeed.h"
 
 DriveTrain* Robot::drivetrain = NULL;
 //Elevator* Robot::elevator = NULL;
@@ -22,6 +24,7 @@ void Robot::RobotInit() {
 //
 	oi = new OI();
 	vision = new Vision();
+	arm = new Arm();
 //
 	autonomousCommand = new Autonomous();
 //	lw = LiveWindow::GetInstance();
