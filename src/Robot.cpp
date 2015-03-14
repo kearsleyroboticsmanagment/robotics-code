@@ -4,6 +4,7 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
+#include "Commands/AutonNothing.h"
 #include "Commands/ArmVertical.h"
 
 DriveTrain* Robot::drivetrain = NULL;
@@ -16,6 +17,7 @@ Vision* Robot::vision = NULL;
 Arm* Robot::arm = NULL;
 
 void Robot::RobotInit() {
+	autoChooser = new SendableChooser();
 	drivetrain = new DriveTrain();
 //	elevator = new Elevator();
 //	wrist = new Wrist();
@@ -26,6 +28,7 @@ void Robot::RobotInit() {
 	arm = new Arm();
 //
 	autonomousCommand = new Autonomous();
+	autonDoNothing = new AutonNothing();
 //	lw = LiveWindow::GetInstance();
 //
 //    // Show what command your subsystem is running on the SmartDashboard
@@ -33,9 +36,13 @@ void Robot::RobotInit() {
 //    SmartDashboard::PutData(elevator);
 //    SmartDashboard::PutData(wrist);
 //    SmartDashboard::PutData(claw);
+	autoChooser->AddDefault("Drive Forward", autonomousCommand);
+	autoChooser->AddObject("Do Nothing", autonDoNothing);
+	SmartDashboard::PutData("Autonomous Modes:", autoChooser);
 }
 
 void Robot::AutonomousInit() {
+	autonomousCommand = (Command *) autoChooser->GetSelected();
 	autonomousCommand->Start();
 //	std::cout << "Starting Auto" << std::endl;
 }

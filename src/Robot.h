@@ -25,12 +25,16 @@ public:
 //	static Elevator* elevator;
 //	static Wrist* wrist;
 //	static Claw* claw;
+
 	static OI* oi;
 	static Vision* vision;
 	static Arm* arm;
 
+	SendableChooser *autoChooser;
+
 private:
 	Command *autonomousCommand;
+	Command *autonDoNothing;
 	Command *teleopVisionCommand;
 //	LiveWindow *lw;
 
