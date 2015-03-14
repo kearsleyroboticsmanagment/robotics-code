@@ -4,6 +4,7 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
+#include "Commands/ArmVertical.h"
 
 DriveTrain* Robot::drivetrain = NULL;
 //Elevator* Robot::elevator = NULL;
@@ -12,6 +13,7 @@ DriveTrain* Robot::drivetrain = NULL;
 //
 OI* Robot::oi = NULL;
 Vision* Robot::vision = NULL;
+Arm* Robot::arm = NULL;
 
 void Robot::RobotInit() {
 	drivetrain = new DriveTrain();
@@ -21,6 +23,7 @@ void Robot::RobotInit() {
 //
 	oi = new OI();
 	vision = new Vision();
+	arm = new Arm();
 //
 	autonomousCommand = new Autonomous();
 //	lw = LiveWindow::GetInstance();

@@ -4,10 +4,10 @@
 #include "CANJaguar.h"
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
-	front_left_motor = new CANJaguar(11);
-	back_left_motor = new CANJaguar(12);
-	front_right_motor = new CANJaguar(13);
-	back_right_motor = new CANJaguar(14);
+	front_left_motor = new CANJaguar(12);
+	back_left_motor = new CANJaguar(14);
+	front_right_motor = new CANJaguar(11);
+	back_right_motor = new CANJaguar(13);
 
 	front_left_motor->SetPercentMode();
 	front_left_motor->EnableControl();
@@ -88,7 +88,7 @@ void DriveTrain::Drive(double x_in, double y_in, double z_in) {
 }
 
 void DriveTrain::Drive(Joystick* joyxy, Joystick* joyz) {
-	Drive(-(joyxy->GetX()),joyxy->GetY(), -(joyz->GetZ()));
+	Drive(-(joyxy->GetX()),-(joyxy->GetY()), -.37*((joyz->GetZ())*(joyz->GetZ())*(joyz->GetZ())));
 }
 //
 //double DriveTrain::GetHeading() {

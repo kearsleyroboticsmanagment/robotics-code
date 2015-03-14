@@ -8,10 +8,12 @@ public:
 	OI();
 	Joystick* GetJoystickXY();
 	Joystick* GetJoystickZ();
+	Joystick* GetJoystickArm();
 
 private:
 	Joystick* joyxy;
 	Joystick* joyz;
+	Joystick* joyArm;
 };
 
 #endif

@@ -14,6 +14,7 @@ OI::OI() {
 
 	joyxy= new Joystick(0);
 	joyz= new Joystick(1);
+	joyArm = new Joystick(2);
 
 
 //    // Create some buttons
@@ -45,4 +46,8 @@ Joystick* OI::GetJoystickXY() {
 
 Joystick* OI::GetJoystickZ() {
 	return joyz;
+}
+
+Joystick* OI::GetJoystickArm(){
+	return joyArm;
 }

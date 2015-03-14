@@ -12,13 +12,13 @@ DriveForward::DriveForward() : Command("DriveForward")
 void DriveForward::Initialize()
 {
 	// set timeout to 1 sec
-	SetTimeout(1);
+	SetTimeout(1.5);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute()
 {
-	Robot::drivetrain->Drive(0,.75,0);
+	Robot::drivetrain->Drive(0,.5,0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
