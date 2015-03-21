@@ -1,5 +1,5 @@
 #include "OI.h"
-
+#include "Commands/FlopNow.h"
 //#include "Commands/SetElevatorSetpoint.h"
 //#include "Commands/OpenClaw.h"
 //#include "Commands/CloseClaw.h"
@@ -16,7 +16,11 @@ OI::OI() {
 	joyz= new Joystick(1);
 	joyArm = new Joystick(2);
 
+	JoystickButton* flop_up = new JoystickButton(joyArm,6);
+	JoystickButton* flop_down = new JoystickButton(joyArm, 7);
 
+	flop_up->ToggleWhenPressed(new FlopNow(1));
+	flop_down->ToggleWhenPressed(new FlopNow(-1));
 //    // Create some buttons
 //    JoystickButton* d_up = new JoystickButton(joy, 5);
 //    JoystickButton* d_right= new JoystickButton(joy, 6);

@@ -18,6 +18,8 @@
 #include "OI.h"
 #include "Subsystems/Vision.h"
 #include "Subsystems/Arm.h"
+#include "Subsystems/FloperMovement.h"
+#include "Subsystems/DIO.h"
 
 class Robot: public IterativeRobot {
 public:
@@ -28,10 +30,17 @@ public:
 	static OI* oi;
 	static Vision* vision;
 	static Arm* arm;
+	static FloperMovement *floper;
+
+	static DIO *flopIn;
+	static DIO *flopOut;
 
 private:
 	Command *autonomousCommand;
 	Command *teleopVisionCommand;
+	Command *flopCommand;
+	Command *limitswitches;
+
 //	LiveWindow *lw;
 
 	void RobotInit();

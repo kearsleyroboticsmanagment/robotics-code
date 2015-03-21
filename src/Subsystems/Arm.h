@@ -9,7 +9,7 @@ class Arm: public Subsystem
 private:
 	//CANJaguar *FL, *BL, *FR, *BR;
 	Jaguar *FL, *BL, *FR, *BR;
-//	Talon *FL, *BL, *FR, *BR;
+	//Talon *FL, *BL, *FR, *BR;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
