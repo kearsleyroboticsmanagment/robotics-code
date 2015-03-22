@@ -34,25 +34,25 @@ void FlopNow::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void FlopNow::Execute()
 {
-	if (Robot::flopIn->IsOn() == true && Robot::flopOut->IsOn() == false)
+	if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == false)
 	{
 		if (direction == (-1))
 		{
 			fm1_copy->Set(Robot::floper->FloperGetSpeed());
 		}
 	}
-	else if (Robot::flopIn->IsOn() == false && Robot::flopOut->IsOn() == true)
+	else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == true)
 	{
 		if (direction == 1)
 		{
 			fm1_copy->Set(Robot::floper->FloperGetSpeed());
 		}
 	}
-	else if (Robot::flopIn->IsOn() == true && Robot::flopOut->IsOn() == true)
+	else if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == true)
 	{
 		//impossable unless messed up
 	}
-	else if (Robot::flopIn->IsOn() == false && Robot::flopOut->IsOn() == false)
+	else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == false)
 	{
 		//imbetween movements
 	}

@@ -12,6 +12,7 @@ private:
 	int port_num;
 	std::string name;
 	bool port_set;
+	bool on;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
@@ -19,8 +20,9 @@ public:
 	DIO(int y);
 	void InitDefaultCommand();
 	void SetPort(int x, std::string name);
-	bool IsOn();
-	bool IsOff();
+	void IsOn();
+	void IsOff();
+	bool GetCase();
 };
 
 #endif

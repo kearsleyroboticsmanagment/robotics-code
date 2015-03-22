@@ -39,7 +39,6 @@ private:
 	Command *autonomousCommand;
 	Command *teleopVisionCommand;
 	Command *flopCommand;
-	Command *limitswitches;
 
 //	LiveWindow *lw;
 

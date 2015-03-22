@@ -6,7 +6,7 @@
 DIO::DIO():Subsystem("DIO")
 {
 	port_num = 10;
-	limit_switch_1 = new DigitalInput(10);
+	//limit_switch_1 = new DigitalInput(10);
 	port_set = false;
 }
 
@@ -36,30 +36,35 @@ void DIO::SetPort(int y, std::string nameIn)
 
 }
 
-bool DIO::IsOn()
+void DIO::IsOn()
 {
 	if (limit_switch_1->Get() == 1)
 	{
 		SmartDashboard::PutBoolean(name, false);
-		return true;
+		on = true;
 	}
 	else
 	{
 		SmartDashboard::PutBoolean(name, true);
-		return false;
+		on = false;
 	}
 }
 
-bool DIO::IsOff()
+void DIO::IsOff()
 {
 	if (limit_switch_1->Get() == 1)
 	{
 		SmartDashboard::PutBoolean(name, true);
-		return false;
+		on = true;
 	}
 	else
 	{
 		SmartDashboard::PutBoolean(name, false);
-		return true;
+		on = true;
 	}
+}
+
+bool DIO::GetCase()
+{
+	return on;
 }
