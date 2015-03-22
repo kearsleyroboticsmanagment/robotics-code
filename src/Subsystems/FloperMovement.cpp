@@ -22,6 +22,11 @@ Talon *FloperMovement::Getfm1()
 	return fm1;
 }
 
+void FloperMovement::SetDirection(int direction_in)
+{
+	direction = direction_in;
+}
+
 void FloperMovement::InitDefaultCommand()
 {
 	SetDefaultCommand(new FlopNow());

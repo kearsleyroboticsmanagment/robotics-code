@@ -1,5 +1,6 @@
 #include "FlopNow.h"
 #include "Robot.h"
+#include "OI.h"
 
 FlopNow::FlopNow()
 {
