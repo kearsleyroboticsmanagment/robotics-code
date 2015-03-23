@@ -11,8 +11,12 @@ public:
 	Joystick* GetJoystickArm();
 	Button *GetButtonFlopUp();
 	Button *GetButtonFlopDown();
+	Button *GetButtonRollIn();
+	Button *GetButtonRollOut();
 	bool GetButtonFlopUpPressed();
 	bool GetButtonFlopDownPressed();
+	bool GetRollInPressed();
+	bool GetRollOutPressed();
 
 private:
 	Joystick* joyxy;
@@ -20,6 +24,8 @@ private:
 	Joystick* joyArm;
 	Button* flop_up;
 	Button* flop_down;
+	Button* roll_in;
+	Button* roll_out;
 };
 
 #endif

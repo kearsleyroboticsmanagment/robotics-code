@@ -35,6 +35,12 @@ void FlopNow::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void FlopNow::Execute()
 {
+	bool flopuppressed;
+	flopuppressed = Robot::oi->GetButtonFlopUpPressed();
+	bool flopdownpressed;
+	flopdownpressed = Robot::oi->GetButtonFlopUpPressed();
+	if (flopuppressed == true)
+	{
 	if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == false)
 	{
 		if (direction == (-1))
@@ -56,8 +62,41 @@ void FlopNow::Execute()
 	else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == false)
 	{
 		//imbetween movements
+		fm1_copy->Set(Robot::floper->FloperGetSpeed());
 	}
 	else{}
+	}
+	else{}
+
+	if(flopdownpressed == true)
+	{
+		if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == false)
+		{
+			if (direction == (-1))
+			{
+				fm1_copy->Set(Robot::floper->FloperGetSpeed());
+			}
+		}
+		else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == true)
+		{
+			if (direction == 1)
+			{
+				fm1_copy->Set(Robot::floper->FloperGetSpeed());
+			}
+		}
+		else if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == true)
+		{
+			//impossable unless messed up
+		}
+		else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == false)
+		{
+			//imbetween movements
+			fm1_copy->Set(Robot::floper->FloperGetSpeed());
+		}
+		else{}
+	}
+	else{}
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

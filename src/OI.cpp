@@ -1,5 +1,6 @@
 #include "OI.h"
 #include "Commands/FlopNow.h"
+#include "Commands/WheelsMoveCommand.h"
 #include "Robot.h"
 
 //#include "Commands/OpenClaw.h"
@@ -21,22 +22,26 @@ OI::OI() {
 	//JoystickButton* flop_down = new JoystickButton(joyArm, 7);
 	flop_up = new JoystickButton(joyxy, 4);
 	flop_down = new JoystickButton(joyxy, 3);
+	roll_in = new JoystickButton(joyArm, 7);
+	roll_out = new JoystickButton(joyArm, 6);
+
+	roll_in->WhenPressed(new WheelsMoveCommand());
+	roll_out->WhenPressed(new WheelsMoveCommand());
 
 	//flop_up->WhenPressed(new FlopNow(1));
 	//flop_down->WhenPressed(new FlopNow(-1));
-	/*
-	if (flop_up->Get() == true)
+	SmartDashboard::PutBoolean("JOY BUTT 6",joyArm->GetRawButton(6));
+	if (joyArm->GetRawButton(7) == true)
 	{
 		Robot::floper->SetDirection(1);
 	}
 	else{}
 
-	if (flop_down->Get() == true)
+	if (joyArm->GetRawButton(6) == true)
 	{
 		Robot::floper->SetDirection(-1);
 	}
 	else{}
-	*/
 //    // Create some buttons
 //    JoystickButton* d_up = new JoystickButton(joy, 5);
 //    JoystickButton* d_right= new JoystickButton(joy, 6);
@@ -82,12 +87,32 @@ Button *OI::GetButtonFlopUp()
 	return flop_up;
 }
 
+Button *OI::GetButtonRollIn()
+{
+	return roll_in;
+}
+
+Button *OI::GetButtonRollOut()
+{
+	return roll_out;
+}
+
 bool OI::GetButtonFlopUpPressed()
 {
-	return flop_up->Get();
+	return (flop_up->Get());
 }
 
 bool OI::GetButtonFlopDownPressed()
 {
-	return flop_down->Get();
+	return (flop_down->Get());
+}
+
+bool OI::GetRollInPressed()
+{
+	return roll_in->Get();
+}
+
+bool OI::GetRollOutPressed()
+{
+	return roll_out->Get();
 }
