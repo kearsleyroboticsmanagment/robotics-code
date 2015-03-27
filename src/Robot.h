@@ -40,6 +40,7 @@ public:
 
 private:
 	Command *autonomousCommand;
+	SendableChooser *chooser;
 	Command *teleopVisionCommand;
 	Command *flopCommand;
 	Command *wheelsmovecommand;

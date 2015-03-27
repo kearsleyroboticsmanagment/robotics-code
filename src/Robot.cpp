@@ -11,6 +11,11 @@
 #include "Commands/WheelsMoveInCommand.h"
 #include "Commands/WheelsMoveOutCommand.h"
 
+#include "Commands/Autonomous.h"
+#include "Commands/AutonLift.h"
+#include "Commands/AutonLiftAndDrive.h"
+#include "Commands/AutonLiftAndDriveStep.h"
+
 DriveTrain* Robot::drivetrain = NULL;
 //Elevator* Robot::elevator = NULL;
 //Wrist* Robot::wrist = NULL;
@@ -23,6 +28,7 @@ FloperMovement *Robot::floper = NULL;
 DIO *Robot::flopIn = NULL;
 DIO *Robot::flopOut = NULL;
 RollerWheels *Robot::rollers = NULL;
+
 
 void Robot::RobotInit() {
 	drivetrain = new DriveTrain();
@@ -43,6 +49,13 @@ void Robot::RobotInit() {
 	wheelsmovecommand = new WheelsMoveCommand();
 
 	oi = new OI();
+
+	chooser = new SendableChooser();
+	chooser->AddDefault("Lift Only", new AutonLift());
+	chooser->AddObject("Lift and Drive", new AutonLiftAndDrive());
+	chooser->AddObject("Lift and Drive Over Step", new AutonLiftAndDriveStep());
+	chooser->AddObject("Drive Only", new Autonomous());
+	SmartDashboard::PutData("Auton Modes:", chooser);
 //	lw = LiveWindow::GetInstance();
 //
 //    // Show what command your subsystem is running on the SmartDashboard
@@ -53,6 +66,7 @@ void Robot::RobotInit() {
 }
 
 void Robot::AutonomousInit() {
+	autonomousCommand = (Command *) chooser->GetSelected();
 	autonomousCommand->Start();
 //	std::cout << "Starting Auto" << std::endl;
 }
