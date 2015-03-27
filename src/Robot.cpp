@@ -8,6 +8,8 @@
 #include "Commands/LimitSwitches.h"
 #include "Commands/FlopNow.h"
 #include "Commands/WheelsMoveCommand.h"
+#include "Commands/WheelsMoveInCommand.h"
+#include "Commands/WheelsMoveOutCommand.h"
 
 DriveTrain* Robot::drivetrain = NULL;
 //Elevator* Robot::elevator = NULL;
@@ -28,7 +30,6 @@ void Robot::RobotInit() {
 //	wrist = new Wrist();
 //	claw = new Claw();
 //
-	oi = new OI();
 	vision = new Vision();
 	arm = new Arm();
 
@@ -40,6 +41,8 @@ void Robot::RobotInit() {
 	autonomousCommand = new Autonomous();
 	flopCommand = new FlopNow();
 	wheelsmovecommand = new WheelsMoveCommand();
+
+	oi = new OI();
 //	lw = LiveWindow::GetInstance();
 //
 //    // Show what command your subsystem is running on the SmartDashboard

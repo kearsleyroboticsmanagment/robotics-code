@@ -15,7 +15,7 @@ WheelsMoveCommand::WheelsMoveCommand(float speed)
 // Called just before this Command runs the first time
 void WheelsMoveCommand::Initialize()
 {
-
+	Robot::rollers->SetSpeed(0);
 }
 
 // Called repeatedly when this Command is scheduled to run

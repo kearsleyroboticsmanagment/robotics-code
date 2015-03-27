@@ -26,6 +26,8 @@ private:
 	Button* flop_down;
 	Button* roll_in;
 	Button* roll_out;
+	Button* roll_in_off;
+	Button* roll_out_off;
 };
 
 #endif

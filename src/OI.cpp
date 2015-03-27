@@ -1,6 +1,10 @@
 #include "OI.h"
 #include "Commands/FlopNow.h"
 #include "Commands/WheelsMoveCommand.h"
+#include "Commands/WheelsMoveOutCommand.h"
+#include "Commands/WheelsMoveInCommand.h"
+#include "Commands/FlopNowDown.h"
+#include "Commands/FlopNowUp.h"
 #include "Robot.h"
 
 //#include "Commands/OpenClaw.h"
@@ -24,14 +28,43 @@ OI::OI() {
 	flop_down = new JoystickButton(joyxy, 3);
 	roll_in = new JoystickButton(joyArm, 7);
 	roll_out = new JoystickButton(joyArm, 6);
+	roll_in_off = new JoystickButton(joyArm, 10);
+	roll_out_off = new JoystickButton(joyArm, 11);
 
-	roll_in->WhenPressed(new WheelsMoveCommand());
-	roll_out->WhenPressed(new WheelsMoveCommand());
+	Command *tempWheelsMoveInCommand;
+	Command *tempWheelsMoveOutCommand;
+	Command *tempWheelsMoveCommand;
+	Command *tempFlopNow;
+	Command *tempFlopNowUp;
+	Command *tempFlopNowDown;
+
+	tempWheelsMoveInCommand = new WheelsMoveInCommand;
+	tempWheelsMoveOutCommand = new WheelsMoveOutCommand;
+	tempWheelsMoveCommand = new WheelsMoveCommand;
+
+	tempFlopNow = new FlopNow;
+	tempFlopNowUp = new FlopNowUp;
+	tempFlopNowDown = new FlopNowDown;
+
+	roll_in->WhileHeld(new WheelsMoveInCommand);
+	//roll_in->WhenReleased(new WheelsMoveOutCommand);
+	roll_out->WhileHeld(new WheelsMoveOutCommand);
+	//roll_out->WhenReleased(new WheelsMoveCommand);
+
+//	roll_in->WhenPressed(tempWheelsMoveInCommand);
+//	roll_out->WhenPressed(tempWheelsMoveOutCommand);
+//	roll_in_off->CancelWhenActive(tempWheelsMoveCommand);
+//	roll_out_off->CancelWhenActive(tempWheelsMoveCommand);
+
+	//flop_up->WhenPressed(tempFlopNowUp);
+	//flop_up->WhenReleased(new FlopNow);
+	//flop_down->WhenPressed(new FlopNowDown);
+	//flop_down->WhenReleased(new FlopNow);
 
 	//flop_up->WhenPressed(new FlopNow(1));
 	//flop_down->WhenPressed(new FlopNow(-1));
-	SmartDashboard::PutBoolean("JOY BUTT 6",joyArm->GetRawButton(6));
-	if (joyArm->GetRawButton(7) == true)
+	//SmartDashboard::PutBoolean("JOY BUTT 6",joyArm->GetRawButton(6));
+	/*if (joyArm->GetRawButton(7) == true)
 	{
 		Robot::floper->SetDirection(1);
 	}
@@ -41,7 +74,7 @@ OI::OI() {
 	{
 		Robot::floper->SetDirection(-1);
 	}
-	else{}
+	else{}*/
 //    // Create some buttons
 //    JoystickButton* d_up = new JoystickButton(joy, 5);
 //    JoystickButton* d_right= new JoystickButton(joy, 6);

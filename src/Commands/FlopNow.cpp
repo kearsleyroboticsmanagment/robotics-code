@@ -108,12 +108,13 @@ bool FlopNow::IsFinished()
 // Called once after isFinished returns true
 void FlopNow::End()
 {
-
+	Robot::floper->FloperSpeed(0);
+	fm1_copy->Set(Robot::floper->FloperGetSpeed());
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void FlopNow::Interrupted()
 {
-
+	End();
 }
