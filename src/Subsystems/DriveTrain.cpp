@@ -5,7 +5,7 @@
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 	front_left_motor = new CANJaguar(12);
-	back_left_motor = new CANJaguar(14);
+	back_left_motor = new CANJaguar(10);
 	front_right_motor = new CANJaguar(11);
 	back_right_motor = new CANJaguar(13);
 

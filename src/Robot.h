@@ -37,6 +37,10 @@ public:
 
 private:
 	Command *autonomousCommand;
+//	Command *autonomousLiftAndDrive;
+//	Command *autonomousLiftAndDriveStep;
+//	Command *autonomousDriveForward;
+	SendableChooser *chooser;
 	Command *teleopVisionCommand;
 	Command *flopCommand;
 

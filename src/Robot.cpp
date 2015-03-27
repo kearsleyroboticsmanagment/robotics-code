@@ -3,10 +3,16 @@
 #include "Commands/Command.h"
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
-#include "Commands/Autonomous.h"
+
 #include "Commands/ArmVertical.h"
 #include "Commands/LimitSwitches.h"
 #include "Commands/FlopNow.h"
+
+#include "Commands/Autonomous.h"
+#include "Commands/AutonLift.h"
+#include "Commands/AutonLiftAndDrive.h"
+#include "Commands/AutonLiftAndDriveStep.h"
+
 
 DriveTrain* Robot::drivetrain = NULL;
 //Elevator* Robot::elevator = NULL;
@@ -34,8 +40,17 @@ void Robot::RobotInit() {
 	flopIn = new DIO(0);
 	flopOut = new DIO(1);
 
-	autonomousCommand = new Autonomous();
+	//autonomousCommand = new Autonomous();
 	flopCommand = new FlopNow();
+
+	chooser = new SendableChooser();
+	chooser->AddDefault("Lift Only", new AutonLift());
+	chooser->AddObject("Lift and Drive", new AutonLiftAndDrive());
+	chooser->AddObject("Lift and Drive Over Step", new AutonLiftAndDriveStep());
+	chooser->AddObject("Drive Only", new Autonomous());
+	SmartDashboard::PutData("Auton Modes:", chooser);
+
+
 //	lw = LiveWindow::GetInstance();
 //
 //    // Show what command your subsystem is running on the SmartDashboard
@@ -46,6 +61,7 @@ void Robot::RobotInit() {
 }
 
 void Robot::AutonomousInit() {
+	autonomousCommand = (Command *) chooser->GetSelected();
 	autonomousCommand->Start();
 //	std::cout << "Starting Auto" << std::endl;
 }
