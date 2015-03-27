@@ -7,6 +7,7 @@
 #include "Commands/ArmVertical.h"
 #include "Commands/LimitSwitches.h"
 #include "Commands/FlopNow.h"
+#include "Commands/WheelsMoveCommand.h"
 
 #include "Commands/Autonomous.h"
 #include "Commands/AutonLift.h"
@@ -25,6 +26,7 @@ Arm* Robot::arm = NULL;
 FloperMovement *Robot::floper = NULL;
 DIO *Robot::flopIn = NULL;
 DIO *Robot::flopOut = NULL;
+RollerWheels *Robot::rollers = NULL;
 
 void Robot::RobotInit() {
 	drivetrain = new DriveTrain();
@@ -39,9 +41,11 @@ void Robot::RobotInit() {
 	floper = new FloperMovement();
 	flopIn = new DIO(0);
 	flopOut = new DIO(1);
+	rollers = new RollerWheels();
 
 	//autonomousCommand = new Autonomous();
 	flopCommand = new FlopNow();
+<<<<<<< HEAD
 
 	chooser = new SendableChooser();
 	chooser->AddDefault("Lift Only", new AutonLift());
@@ -51,6 +55,9 @@ void Robot::RobotInit() {
 	SmartDashboard::PutData("Auton Modes:", chooser);
 
 
+=======
+	wheelsmovecommand = new WheelsMoveCommand();
+>>>>>>> origin/Kettering-Disterict-2015_Revisions
 //	lw = LiveWindow::GetInstance();
 //
 //    // Show what command your subsystem is running on the SmartDashboard

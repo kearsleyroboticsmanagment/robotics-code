@@ -20,6 +20,7 @@
 #include "Subsystems/Arm.h"
 #include "Subsystems/FloperMovement.h"
 #include "Subsystems/DIO.h"
+#include "Subsystems/RollerWheels.h"
 
 class Robot: public IterativeRobot {
 public:
@@ -35,6 +36,8 @@ public:
 	static DIO *flopIn;
 	static DIO *flopOut;
 
+	static RollerWheels *rollers;
+
 private:
 	Command *autonomousCommand;
 //	Command *autonomousLiftAndDrive;
@@ -43,6 +46,7 @@ private:
 	SendableChooser *chooser;
 	Command *teleopVisionCommand;
 	Command *flopCommand;
+	Command *wheelsmovecommand;
 
 //	LiveWindow *lw;
 

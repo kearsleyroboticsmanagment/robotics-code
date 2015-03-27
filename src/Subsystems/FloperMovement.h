@@ -18,6 +18,7 @@ public:
 	void InitDefaultCommand();
 	void FloperSpeed(float speed);
 	float FloperGetSpeed();
+	void SetDirection(int direction_in);
 	Talon *Getfm1();
 };
 
