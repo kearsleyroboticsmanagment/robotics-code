@@ -11,7 +11,7 @@ DriveStep::DriveStep()
 // Called just before this Command runs the first time
 void DriveStep::Initialize()
 {
-	SetTimeout(2.25);
+	SetTimeout(2.5);
 }
 
 // Called repeatedly when this Command is scheduled to run

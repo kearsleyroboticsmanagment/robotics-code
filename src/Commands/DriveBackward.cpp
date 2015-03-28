@@ -12,7 +12,7 @@ DriveBackward::DriveBackward() : Command("DriveBackward")
 void DriveBackward::Initialize()
 {
 	// set timeout to 1 sec
-	SetTimeout(2.25);
+	SetTimeout(2.5);
 }
 
 // Called repeatedly when this Command is scheduled to run
