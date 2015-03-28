@@ -27,6 +27,11 @@ void FloperMovement::SetDirection(int direction_in)
 	direction = direction_in;
 }
 
+void FloperMovement::MoveNow()
+{
+	fm1->Set(speed);
+}
+
 void FloperMovement::InitDefaultCommand()
 {
 	SetDefaultCommand(new FlopNow());

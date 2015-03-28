@@ -7,8 +7,8 @@ FlopNowUp::FlopNowUp()
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(Robot::floper);
-	fm1_copy = Robot::floper->Getfm1();
-	Robot::floper->FloperSpeed(0);
+	Robot::floper->FloperSpeed(.25);
+	direction = 1;
 }
 
 FlopNowUp::FlopNowUp(int direct)
@@ -16,12 +16,12 @@ FlopNowUp::FlopNowUp(int direct)
 	if (direct == (-1))
 	{
 		direction = direct;
-		Robot::floper->FloperSpeed(-.5);
+		Robot::floper->FloperSpeed(-.25);
 	}
 	else if (direct == 1)
 	{
 		direction = direct;
-		Robot::floper->FloperSpeed(.5);
+		Robot::floper->FloperSpeed(.25);
 	}
 	else{}
 }
@@ -30,86 +30,51 @@ FlopNowUp::FlopNowUp(int direct)
 void FlopNowUp::Initialize()
 {
 	//Robot::floper->FloperSpeed(0);
+	Robot::floper->FloperSpeed(.25);
+	direction = 1;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void FlopNowUp::Execute()
 {
-	bool flopuppressed;
-	flopuppressed = Robot::oi->GetButtonFlopUpPressed();
-	bool flopdownpressed;
-	flopdownpressed = Robot::oi->GetButtonFlopUpPressed();
-	if (flopuppressed == true)
-	{
 	if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == false)
-	{
-		if (direction == (-1))
-		{
-			fm1_copy->Set(Robot::floper->FloperGetSpeed());
-		}
-	}
-	else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == true)
-	{
-		if (direction == 1)
-		{
-			fm1_copy->Set(Robot::floper->FloperGetSpeed());
-		}
-	}
-	else if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == true)
-	{
-		//impossable unless messed up
-	}
-	else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == false)
-	{
-		//imbetween movements
-		fm1_copy->Set(Robot::floper->FloperGetSpeed());
-	}
-	else{}
-	}
-	else{}
-
-	if(flopdownpressed == true)
-	{
-		if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == false)
 		{
 			if (direction == (-1))
 			{
-				fm1_copy->Set(Robot::floper->FloperGetSpeed());
+				Robot::floper->MoveNow();
 			}
 		}
 		else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == true)
 		{
 			if (direction == 1)
 			{
-				fm1_copy->Set(Robot::floper->FloperGetSpeed());
+				Robot::floper->MoveNow();
 			}
 		}
 		else if (Robot::flopIn->GetCase() == true && Robot::flopOut->GetCase() == true)
 		{
-			//impossable unless messed up
+			//imbetween movements
+			Robot::floper->MoveNow();
 		}
 		else if (Robot::flopIn->GetCase() == false && Robot::flopOut->GetCase() == false)
 		{
-			//imbetween movements
-			fm1_copy->Set(Robot::floper->FloperGetSpeed());
+			//impossable unless messed up
 		}
 		else{}
-	}
-	else{}
-
+	//Robot::floper->MoveNow();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool FlopNowUp::IsFinished()
 {
-	return false;
+	return !(Robot::flopOut->GetCase());
 }
 
 // Called once after isFinished returns true
 void FlopNowUp::End()
 {
 	Robot::floper->FloperSpeed(0);
-	fm1_copy->Set(Robot::floper->FloperGetSpeed());
+	Robot::floper->MoveNow();
 }
 
 // Called when another command which requires one or more of the same

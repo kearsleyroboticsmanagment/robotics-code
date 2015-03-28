@@ -11,13 +11,13 @@ DriveClear::DriveClear()
 // Called just before this Command runs the first time
 void DriveClear::Initialize()
 {
-	SetTimeout(2.25);
+	SetTimeout(2.0);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveClear::Execute()
 {
-	Robot::drivetrain->Drive(0,.6,0);
+	Robot::drivetrain->Drive(0,.5,0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

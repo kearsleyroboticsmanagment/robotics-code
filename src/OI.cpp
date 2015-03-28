@@ -24,41 +24,19 @@ OI::OI() {
 
 	//JoystickButton* flop_up = new JoystickButton(joyArm,6);
 	//JoystickButton* flop_down = new JoystickButton(joyArm, 7);
-	flop_up = new JoystickButton(joyxy, 4);
-	flop_down = new JoystickButton(joyxy, 3);
+	flop_up = new JoystickButton(joyxy, 3);
+	flop_down = new JoystickButton(joyxy, 5);
 	roll_in = new JoystickButton(joyArm, 7);
 	roll_out = new JoystickButton(joyArm, 6);
-	roll_in_off = new JoystickButton(joyArm, 10);
-	roll_out_off = new JoystickButton(joyArm, 11);
-
-	Command *tempWheelsMoveInCommand;
-	Command *tempWheelsMoveOutCommand;
-	Command *tempWheelsMoveCommand;
-	Command *tempFlopNow;
-	Command *tempFlopNowUp;
-	Command *tempFlopNowDown;
-
-	tempWheelsMoveInCommand = new WheelsMoveInCommand;
-	tempWheelsMoveOutCommand = new WheelsMoveOutCommand;
-	tempWheelsMoveCommand = new WheelsMoveCommand;
-
-	tempFlopNow = new FlopNow;
-	tempFlopNowUp = new FlopNowUp;
-	tempFlopNowDown = new FlopNowDown;
 
 	roll_in->WhileHeld(new WheelsMoveInCommand);
 	//roll_in->WhenReleased(new WheelsMoveOutCommand);
 	roll_out->WhileHeld(new WheelsMoveOutCommand);
 	//roll_out->WhenReleased(new WheelsMoveCommand);
 
-//	roll_in->WhenPressed(tempWheelsMoveInCommand);
-//	roll_out->WhenPressed(tempWheelsMoveOutCommand);
-//	roll_in_off->CancelWhenActive(tempWheelsMoveCommand);
-//	roll_out_off->CancelWhenActive(tempWheelsMoveCommand);
-
-	//flop_up->WhenPressed(tempFlopNowUp);
+	flop_up->WhileHeld(new FlopNowUp);
 	//flop_up->WhenReleased(new FlopNow);
-	//flop_down->WhenPressed(new FlopNowDown);
+	flop_down->WhileHeld(new FlopNowDown);
 	//flop_down->WhenReleased(new FlopNow);
 
 	//flop_up->WhenPressed(new FlopNow(1));

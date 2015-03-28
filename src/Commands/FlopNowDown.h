@@ -7,7 +7,6 @@
 class FlopNowDown: public CommandBase
 {
 private:
-	Talon *fm1_copy;
 	int direction = 0;
 public:
 	FlopNowDown();

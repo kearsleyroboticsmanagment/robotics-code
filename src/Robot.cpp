@@ -7,6 +7,8 @@
 #include "Commands/ArmVertical.h"
 #include "Commands/LimitSwitches.h"
 #include "Commands/FlopNow.h"
+#include "Commands/FlopNowUp.h"
+#include "Commands/FlopNowDown.h"
 #include "Commands/WheelsMoveCommand.h"
 #include "Commands/WheelsMoveInCommand.h"
 #include "Commands/WheelsMoveOutCommand.h"
@@ -15,6 +17,7 @@
 #include "Commands/AutonLift.h"
 #include "Commands/AutonLiftAndDrive.h"
 #include "Commands/AutonLiftAndDriveStep.h"
+#include "Commands/AutonLiftAndDriveBackwardStep.h"
 
 DriveTrain* Robot::drivetrain = NULL;
 //Elevator* Robot::elevator = NULL;
@@ -54,6 +57,7 @@ void Robot::RobotInit() {
 	chooser->AddDefault("Lift Only", new AutonLift());
 	chooser->AddObject("Lift and Drive", new AutonLiftAndDrive());
 	chooser->AddObject("Lift and Drive Over Step", new AutonLiftAndDriveStep());
+	chooser->AddObject("Lift and Drive Backward Over Step", new AutonLiftAndDriveBackwardStep());
 	chooser->AddObject("Drive Only", new Autonomous());
 	SmartDashboard::PutData("Auton Modes:", chooser);
 //	lw = LiveWindow::GetInstance();
